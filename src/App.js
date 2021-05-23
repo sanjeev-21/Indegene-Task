@@ -1,10 +1,10 @@
 import "antd/dist/antd.css";
-import { GlobalProvider} from './Context/GlobalState';
-import NavBar from './Components/NavBar';
+import { GlobalProvider } from "./Context/GlobalState";
+import NavBar from "./Components/NavBar";
 function App() {
-  return ( 
+  return (
     <GlobalProvider>
-      <NavBar/>  
+        <NavBar/>
     </GlobalProvider>
   );
 }

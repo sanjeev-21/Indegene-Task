@@ -1,41 +1,35 @@
-import React, {useState} from 'react';
-import { Layout, Menu } from 'antd';
-import Questions from './Questions';
-import UserDet from './UserDet';
-import logo from '../indegene.png';
-import DynamicSettings from './Users';
+import React from "react";
+import { Layout, Menu } from "antd";
+import Questions from "./Questions";
+import UserDet from "./UserDet";
+import logo from "../indegene.png";
+import ProTableUserDetails from "./Users";
+import { UserOutlined, QuestionCircleOutlined } from "@ant-design/icons";
 import {
-    MenuUnfoldOutlined,
-    MenuFoldOutlined,
-    UserOutlined,
-    QuestionCircleOutlined,
-  } from '@ant-design/icons';
-  import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
-  const { Header, Sider, Content } = Layout;
-export default function NavBar(){
-    const [ collapsed, setCollapsed ] = useState(false);
-    const toggle = () => {
-        setCollapsed(!collapsed);
-      };
-    return(
-      <Router>
+  BrowserRouter as Router,
+  // Switch,
+  Route,
+  Link,
+} from "react-router-dom";
+const { Sider, Content } = Layout;
+export default function NavBar() {
+  return (
+    <Router>
       <Layout>
-        <Sider trigger={null} collapsible collapsed={collapsed}>
-          <div className="logo" >
-            <img src={logo} style={{width:'75%',marginTop:'15px', marginLeft:'20px', marginBottom:'10px'}}/>          
-          {/* <span className="site-layout-background" style={{ padding: 0, color:'white', marginLeft:'5px' }}>
-            {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-              className: 'trigger',
-              onClick: toggle,
-            })}
-          </span> */}
+        <Sider trigger={null} collapsible collapsed={false}>
+          <div className="logo">
+            <img
+              src={logo}
+              alt="logo"
+              style={{
+                width: "75%",
+                marginTop: "15px",
+                marginLeft: "20px",
+                marginBottom: "10px",
+              }}
+            />
           </div>
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
             <Menu.Item key="1" icon={<UserOutlined />}>
               User Details
               <Link to="/" />
@@ -51,21 +45,20 @@ export default function NavBar(){
           </Menu>
         </Sider>
         <Layout className="site-layout">
-          
           <Content
             className="site-layout-background"
             style={{
-              margin: '24px 16px',
+              margin: "24px 16px",
               padding: 24,
               minHeight: 280,
             }}
-          >            
-             <Route exact path="/" component={UserDet} />
-             <Route path="/questions" component={Questions} />
-             <Route path="/details_with_proTable" component={DynamicSettings} />
+          >
+            <Route exact path="/" component={UserDet} />
+            <Route path="/questions" component={Questions} />
+            <Route path="/details_with_proTable" component={ProTableUserDetails} />
           </Content>
         </Layout>
       </Layout>
-      </Router>
-    )
+    </Router>
+  );
 }
