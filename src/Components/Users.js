@@ -151,7 +151,7 @@ const ProTableUserDetails = () => {
             ? () => ""
             : false
         }
-        footer={config.footer ? () => "Here is footer" : false}
+        footer={config.footer ? () => "" : false}
         headerTitle={config.headerTitle}
         columns={tableColumns}
         dataSource={genData(
