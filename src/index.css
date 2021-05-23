@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.table-operations {
+  margin-bottom: 16px;
+}
+
+.table-operations > button {
+  margin-right: 8px;
+}
+.ant-collapse-content-inactive{
+  display: none;
+}
+.ant-collapse-content-active{
+  display: block;
+}
+.ant-pro-form-query-filter{
+  display: none;
+}
