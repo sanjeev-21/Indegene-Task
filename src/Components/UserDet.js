@@ -125,8 +125,7 @@ export default class UserDet extends Component {
         sorter: sort,
         key: value,
         ellipsis: true,
-      };
-      console.log("obj", obj);
+      }
       this.setState({
         columns: [...columns, obj],
       });
