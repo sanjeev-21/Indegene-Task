@@ -101,15 +101,7 @@ export default class UserDet extends Component {
       ],
     };
   }
-
-  setAgeSort = () => {
-    this.setState({
-      sortedInfo: {
-        order: "descend",
-        columnKey: "age",
-      },
-    });
-  };
+  //Calling function to add/display column
   onCheckChange(e, value) {
     let sort;
     if (value === "id") {

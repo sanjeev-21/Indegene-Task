@@ -118,7 +118,8 @@ const ProTableUserDetails = () => {
         );
   return (
     <ConfigProvider locale={enUS}>
-      <ProTable className="pro-table-scroll"
+      <span style={{ fontSize: "23px", fontWeight: "600" }}>Displaying list of Users using Pro Table</span>
+      <ProTable className="pro-table-scroll" style={{marginTop:'5%'}}
         {...config}
         pagination={
           (

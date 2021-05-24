@@ -30,35 +30,38 @@ export default function Questions() {
   const [deleteId, setDeleteId] = useState();
   const [showEoorMsg, setShowErrorMsg] = useState(false);
   const { Panel } = Collapse;
+
+  //Calling function onclick of edit icon and storing values
   function editAnswer(value) {
-    console.log(value);
-    setId(value.id);
-    setEditQuestion(value.question);
-    setFlag(true);
+    setId(value.id); 
+    setEditQuestion(value.question); 
+    setFlag(true); //making flag as true to display input field
   }
   function panelClick() {
-    setFlag(false);
+    setFlag(false);//Hiding the input field onclick of panel
   }
+  //To open the modal
   function openModal() {
     setQuesFlag(false);
-    setIsModalVisible(true);
+    setIsModalVisible(true); 
   }
   const handleCancel = () => {
-    setIsModalVisible(false);
+    setIsModalVisible(false); //Closing modal onclick of cancel button
   };
   const onRequiredTypeChange = ({ requiredMarkValue }) => {
     setRequiredMarkType(requiredMarkValue);
   };
   function handleQuestion(e) {
     setShowErrorMsg(false);
-    setQuestion(e.target.value);
+    setQuestion(e.target.value); //assigning question input value 
   }
   function handleAnswer(e) {
-    setAnswer(e.target.value);
+    setAnswer(e.target.value); //assigning answer input value 
   }
   function handleEditAnswer(e) {
-    setEditAnswer(e.target.value);
+    setEditAnswer(e.target.value); //assigning edited answer's input value 
   }
+  //Calling function onclick of create button in modal
   const handleOk = () => {
     if (question !== "") {
       let obj = {
@@ -67,44 +70,42 @@ export default function Questions() {
         question: question,
         answer: answer,
       };
-      setQuesFlag(true);
+      setQuesFlag(true); // to display success alert box
       setTimeout(() => {
-        setQuesFlag(false);
+        setQuesFlag(false); // to hide success alert box after 2.5 secs
       }, 2500);
-      console.log("obj", obj);
-      addQuestion(obj);
-      setIsModalVisible(false);
+      addQuestion(obj); // adding question object to array
+      setIsModalVisible(false); // close modal
     } else {
-      setShowErrorMsg(true);
+      setShowErrorMsg(true); // display error message if question input is empty
     }
   };
+  //To submit the edited answer
   function updateAns() {
     let obj = {
       id: id,
       question: editedQues,
       answer: editedAnswer,
     };
-    editQuestion(obj);
-    //setFlag(false);
+    editQuestion(obj); //sending updated answer's object
     var x = document.querySelectorAll(".ant-collapse-item-active");
-    console.log(x);
     if (x.length) {
       for (var i = 0; i < x.length; i++) {
         setTimeout(function () {
           var el = document.querySelector(".ant-collapse-item-active");
-          console.log(el);
           el.children[0].click();
         }, 100);
       }
     }
   }
+  //to delete the question based on id
   function confirm(e) {
-    deleteQuestion(deleteId);
+    deleteQuestion(deleteId); //sending question id
     message.success("Deleted Successfully");
   }
 
   function cancel(e) {
-    message.error("Click on No");
+    message.error("Canceled");
   }
   function removeQuestion(value) {
     setDeleteId(value.id);
@@ -114,7 +115,7 @@ export default function Questions() {
       {quesFlag && (
         <div>
           <Alert
-            style={{ width: "40%", float: "right" }}
+            style={{ width: "40%", float: "right",marginTop:'-3.5%' }}
             message="Question Added Successfully"
             description="Thank you for adding a question!"
             type="success"
@@ -124,9 +125,9 @@ export default function Questions() {
         </div>
       )}
       <br></br>
-      <div style={{ marginTop: "5%" }}>
-        <h2>Frequently Asked Questions!</h2>
-        <Collapse accordion onChange={() => panelClick()}>
+      <div>
+      <span style={{ fontSize: "23px", fontWeight: "600" }}>Frequently Asked Questions!</span>
+        <Collapse accordion onChange={() => panelClick()} style={{ marginTop: "5%" }}>
           {questions &&
             questions.map((value, i) => (
               <Panel

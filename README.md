@@ -1,4 +1,4 @@
-# Indegene Coing challenge
+# Indegene Coding challenge
 
 ### `npm install`
 Installs all the dependencies
